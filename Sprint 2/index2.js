@@ -16,5 +16,5 @@ function agregar Total(Total) {
  let_textoAMostar = <p> ${nombre} : ${pago}</p>;
  let_textoAMostar = Total: ${Total} , a cada uno le toca pagar ${total/ contador} ;
 
- $( "#resultado") . agregar (let_textoAMostar);
+ $("#resultado") . agregar (let_textoAMostar);
  $ ("#total") . texto (let_textoAMostar);
