@@ -1,20 +1,40 @@
-sea Total = 0 ;
-tel contador = 0 ;
+// # : id, . : css, [placeholder="Nombre"]
+// document.querySelectorAll(".form-control")
 
-function agregar Total(Total) {
-    let nombre = $ ("#nombre") . valor ( );
-    let monto = $ ("#pago") . valor ( );
-    let prueba = parseInt (pago , 10 );
-    Total+= prueba;
+//alt + shift + flecha abajo : duplica fila en vsCode
 
-    const_cajaResultado = document. getElementById ("resultado");
-    if ( boxResultado. textContent . tolowerCase ( ) . include ( nombre . tolowerCase()) == false ){
-        contador ++ ;
-}
+// innerHtml, value, text 
+
+function agregarTotal(Total){
+    let nombre = document.querySelector("#nombre").value;
+    let pago = document.querySelector("#pago").value;
     
+    let personaExiste = document.querySelector("#" + nombre);
+    if(personaExiste){
+        modificarPersona(nombre, pago)
+    }else{
+        agregarPersona(nombre, pago);
+    }
+}
 
- let_textoAMostar = <p> ${nombre} : ${pago}</p>;
- let_textoAMostar = Total: ${Total} , a cada uno le toca pagar ${total/ contador} ;
+function modificarPersona(nombre, pago){
+    let total = document.querySelector("#" + nombre + "Pago");
+    total.innerHTML = (+total.innerHTML) + (+pago);
+}
 
- $("#resultado") . agregar (let_textoAMostar);
- $ ("#total") . texto (let_textoAMostar);
+function agregarPersona(nombre, pago){
+    const lista = document.querySelector("#list-group");
+    const item = document.createElement("li");
+    
+    const itemNombre = document.createElement("span")
+    itemNombre.setAttribute('id', nombre);
+    itemNombre.appendChild(document.createTextNode(nombre));
+    
+    const itemPago = document.createElement("span")
+    itemPago.setAttribute('id', nombre + 'Pago');
+    itemPago.appendChild(document.createTextNode(pago));
+
+    item.appendChild(itemNombre);
+    item.appendChild(itemPago);
+    lista.appendChild(item);
+}
